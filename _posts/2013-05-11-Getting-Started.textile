@@ -1,0 +1,26 @@
+---
+layout: post
+category :
+tagline: ""
+tags : []
+---
+{% include JB/setup %}
+
+I have been looking for a blog platform for some time. The features I am looking for include
+# Markdown/textile support (try to create a table in Blogger and you know why I want this)
+# MathJax support (as a boring engineer I would occasionally like to write down some equations)
+# Full site import and export
+# Search support for non-English
+# Code snippet and syntax highlight
+# Version control
+# Free hosting
+
+WordPress seems to support all of the features I want (with plug-ins), but I am not sure if there is a free host that allows the installation of arbitrary plug-ins. Blogger does not support markdown yet. I was once considering a wiki platform like wikidot.com, but there seems some overhead in learning the framework. 
+
+Few days ago I read some post about "building your blog with Jekyll+GitHub in 5 minutes," and I decided to give it a try. With Jekyll Bootstrap, it is surprisingly simple. It came out of box with most of the features I wanted, and after some googling, I customized the blog with MathJax support added. I will find out how to include a gist in the post some time later. It shouldn't be too difficult to do it for a blog hosted on GitHub.
+
+Quick summary for my customizations:
+# "Personalize _config.yml":https://github.com/yychang/yychang.github.com/commit/097a0f9f44e4d8a1a3a950406c3fe2a9d05ba24d
+# "Make the home page to display the 4 recent posts":https://github.com/yychang/yychang.github.com/commit/7a9007efa44d8b0a9d61d24acc4852492eb9345f
+# "Hide the sample post":https://github.com/yychang/yychang.github.com/commit/1b29f17865ffb886ecab8f6e16ae2a1009a49867
+# "Add MathJax support":https://github.com/yychang/yychang.github.com/commit/40701ebef8896e1b9c4972ed7367e72b8060d263
