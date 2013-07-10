@@ -57,7 +57,8 @@ h3. Step 3: Creating example codes
 
 Here I implement a trivial function in @example.h@ and @example.cpp@:
 
-<pre><code class="cpp">// example.h
+{% highlight C++ %}  
+// example.h
 int add_2(int x);
 
 // example.cpp
@@ -65,7 +66,8 @@ int add_2(int x);
 
 int add_2(int x) {
   return x+2;
-}</code></pre>
+}
+{% endhighlight %}
 
 And the test is implemented in a separate file @example_test.cpp@:
 
