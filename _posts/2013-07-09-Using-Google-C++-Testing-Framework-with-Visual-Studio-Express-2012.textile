@@ -57,7 +57,7 @@ h3. Step 3: Creating example codes
 
 Here I implement a trivial function in @example.h@ and @example.cpp@:
 
-{% highlight C++ %}  
+{% highlight cpp %}  
 // example.h
 int add_2(int x);
 
