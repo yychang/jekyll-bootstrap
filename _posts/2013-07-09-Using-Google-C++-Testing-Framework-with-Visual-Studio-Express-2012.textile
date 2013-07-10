@@ -1,0 +1,82 @@
+---
+layout: post
+category :
+tagline: ""
+tags : []
+---
+{% include JB/setup %}
+
+In the past few days I was playing with the "Google C++ Testing Framework":http://code.google.com/p/googletest, and it seems a very promising testing framework. Following is a short guide about creating a new Visual Studio 2012 Express project with Google C++ Testing Framework for my future reference. 
+
+Quick Summary:
+* The environment as of the writing
+** Windows 7 64-bit
+** Visual Studio Express 2012 for Windows Desktop
+** Google C++ Testing Framework v1.6.0
+* Step 1: Obtaining the Google C++ Testing Framework codes
+## Download the source codes from the project "homepage":http://code.google.com/p/googletest/downloads/list; unzip it.
+## Assume the source codes are unzipped to the directory @GTEST_ROOT@, open the VS solution file @GTEST_ROOT/msvc/gtest.sln@ and let VS 2012 convert the project files into the latest version.
+* Step 2: Creating the test project
+## Create a new project (which generates a new solution as well). Let's call the project @MyTest@ here.
+## Add two projects to the solution: 
+### @GTEST_ROOT/msvc/gtest.vcxproj@ and 
+### @GTEST_ROOT/msvc/gtest_main.vcxproj@
+## Add @GTEST_ROOT\include@ to @Additional Include Directory@
+## Add preprocessor @_VARIADIC_MAX=10@ to all the projects (@gtest@, @gtest_main@, and @MyTest@)
+## Make sure the @Runtime Library@ configuration of all projects are identical
+## Add @gtest@ and @gtest_main@ to the @Project Reference@ in @MyTest@
+* Step 3: Creating example codes
+
+h3. Step 1: Obtaining the Google C++ Testing Framework codes
+
+The @.sln@ and @.vcproj@ files included in the source codes are for the Visual Studio older than 2010. Fortunately, they will be all converted to the up-to-date format when opened with Visual Studio Express 2012. 
+
+The source codes are not compilable at this moment due to the compilation error caused by @std::tuple@. The solution is to add the preprocessor @_VARIADIC_MAX=10@ to all the projects (See the issue on "StackOverflow":http://stackoverflow.com/questions/8274588/c2977-stdtuple-too-many-template-arguments-msvc11). Note that the preprocessor has to be added to both @Release@ and @Debug@ configuration.  
+
+Note there are two @.sln@ files in the source codes: @gtest.sln@ and @gtest-md.sln@. The former one is for static library build and the latter is for DLL. 
+
+h3. Step 2: Creating the test project
+
+The next step is to create a new VS project and set up the environment. First of all, @gtest@ project needs to be included, and the directory @GTEST_ROOT\include@ needs to be added to @Additional Include Directory@ for the test project. I will call the test project as @MyTest@ in this post. 
+
+@Additional Include Directory@ can be found at 
+<pre>PROJECT --> MyTest Properties --> Configuration Properties --> C/C++ --> General --> Additional Include Directory</pre>
+
+Another project @gtest_main@ should be included so that a built-in @main()@ function will run all the implemented tests.
+
+The preprocessor @_VARIADIC_MAX=10@ needs to be added into @MyTest@ to get rid of the compilation error about @std::tuple@. Also, the @Runtime Library@ setting in @MyTest@ has to match those in @gtest@ and @gtest_main@:
+* @Release@ configuration: @/MT@
+* @Debug@ configuration: @/MTd@
+
+@Runtime Library@ can be found at 
+<pre>PROJECT --> MyTest Properties --> Configuration Properties --> C/C++ --> Code Generation --> Runtime Library</pre>
+
+Finally, @gtest@ and @gtest_main@ need to be added as the @Project Reference@ of @MyTest@. For why and how, see the issue on "StackOverflow":http://stackoverflow.com/questions/3795567/visual-studio-2010-not-autolinking-static-libraries-from-projects-that-are-depen.
+
+h3. Step 3: Creating example codes
+
+Here I implement a trivial function in @example.h@ and @example.cpp@:
+
+<pre><code class="cpp">// example.h
+int add_2(int x);
+
+// example.cpp
+#include "example.h"
+
+int add_2(int x) {
+  return x+2;
+}</code></pre>
+
+And the test is implemented in a separate file @example_test.cpp@:
+
+<pre><code class="cpp">// example_test.cpp
+#include "example.h"
+#include "gtest/gtest.h"
+
+TEST(ExampleTest, add_2_test) {
+  EXPECT_EQ(3, add_2(1) );
+}</code></pre>
+
+This test checks whether the function @add_2(1)@ returns 3. Add these 3 files to @MyTest@ project, compile, and run. It should show that 1/1 of the tests are passed.
+
+For more details about the keywords and grammar of Google C++ Testing Framework, see the "official primer":http://code.google.com/p/googletest/wiki/V1_6_Primer
