@@ -57,7 +57,7 @@ h3. Step 3: Creating example codes
 
 Here I implement a trivial function in @example.h@ and @example.cpp@:
 
-{% highlight cpp %}  
+{% highlight cpp %}
 // example.h
 int add_2(int x);
 
@@ -71,13 +71,15 @@ int add_2(int x) {
 
 And the test is implemented in a separate file @example_test.cpp@:
 
-<pre><code class="cpp">// example_test.cpp
+{% highlight cpp %}
+// example_test.cpp
 #include "example.h"
 #include "gtest/gtest.h"
 
 TEST(ExampleTest, add_2_test) {
   EXPECT_EQ(3, add_2(1) );
-}</code></pre>
+}
+{% endhighlight %}
 
 This test checks whether the function @add_2(1)@ returns 3. Add these 3 files to @MyTest@ project, compile, and run. It should show that 1/1 of the tests are passed.
 
