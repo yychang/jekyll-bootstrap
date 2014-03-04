@@ -1,0 +1,29 @@
+---
+title: "Rooting HTC Incredible To Solve \"Low on Space\" Problem"
+layout: post
+category :
+tagline: ""
+tags : []
+---
+{% include JB/setup %}
+
+I recently ran into the problem of "Low on space" on my HTC Incredible. I was trying to install some app, and the internal storage and the SD card storage seemed empty enough, but the phone kept complaining it's "Low on space." I later learned that there is something called "application data storage":https://community.verizonwireless.com/thread/731792, which is only 149MB on HTC Incredible, and it's this application data storage that ran out of space. 
+
+I was able to download and use the app on my (rooted) Nook Color, and I got a chance to see how much application data storage the app requires. Oops, 200+MB. There is no way I can install it on my HTC Incredible as long as the limit of 149MB is still there. But... like all the other problems we encounter on a daily basis, there is already someone who shares our pains and finds a solution. The instruction written by "soniclude":http://forum.xda-developers.com/showthread.php?t=1488351 is a detailed walkthrough, and I got the idea about what should be done there. The problem is that the method of using the USB driver and unrevoked3 from unrevoked.com does not work for me. To get my phone rooted, I instead referenced to the instruction written by "scotty85":http://androidforums.com/incredible-all-things-root/531353-how-unlock-downgrade-achieve-s-off-htcdev.html. A short summary:
+* I referenced scotty85's instruction to
+** Unlock the bootloader
+** Flash recovery
+** Flash superuser root files.
+* I then referenced soniclude's instruction to 
+** Apply the storage size fix.
+
+soniclue's method of using @unrevoked@ does not work for me in several ways:
+* The USB driver provided by unrevoked.com does not make HTC Incredible recognized by Win 8 or Win Vista. 
+** On Win 8 I have to disable digital signature checking in order to get the driver installed. But it doesn't help. In the Device Manager it showed an warning sign saying the (android) device is not started.
+** Some people reported that clicking "Update Drivers" right after the Windows finds the phone would resolve the "device not started" problem. It doesn't work for me.
+* Installing HTC Sync (and removing it later) does not resolve the driver issue. The phone can be recognized by Windows OS when the phone is booted to the normal mode. But it cannot be recognized when in the HBOOT mode.
+* Probably because the phone is not recognized in HBOOT mode, Unrevoked.exe hangs at the step of "waiting for bootloader".
+
+scotty85's guide works for me, except that it does not work on Win 8. The syndrome is that Win 8 cannot properly recognize the phone, and the commands of @fastboot oem get_identifier_token@ returns nothing. However, for some reason the instruction works just fine on my old Win Vista computer. "Other people":http://forum.xda-developers.com/showpost.php?p=44729682&postcount=19 also reported similar observation. 
+
+Now I have the app on my HTC Incredible, with a bonus: I can now "disable all the bloatware":http://androidforums.com/incredible-all-things-root/138249-those-who-need-help-disabling-removing-apps-including-2-2-here-list.html as a root user. I am surprised that the app does not run faster on HTC Incredible than on Nook Color, but that's another story.
