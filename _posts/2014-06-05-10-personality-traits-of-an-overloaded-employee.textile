@@ -1,0 +1,51 @@
+---
+layout: post
+category :
+tagline: ""
+tags : []
+---
+{% include JB/setup %}
+
+Today I saw an interesting infographic titled "13 personality traits of a disengaged employee." While what it says is "if one is a disengaged employee, he/she tends to have some 13 personality traits," I can imagine there are lots of people starting thinking "if one shows these 13 personality traits, he/she is probably a disengaged employee". 
+
+Well, that's obviously a converse error. If you believe you can identify the disengaged employee using those 13 traits, you should also believe that you can identify the "overloaded employee" using the following 10 traits.
+
+h3. 1. Complain
+
+Overloaded employees tend to complain, for an obvious reason.
+
+h3. 2. Makes Excuses
+
+Overloaded employees may deliver results of poor quality, and their honest analysis about the poor quality (e.g. tight schedule, insufficient resources) usually sounds like excuses to those who don't believe the employee is overloaded.
+
+h3. 3. Lack Enthusiasm
+
+When a new task or project comes up, overloaded employees are always the least excited. They will either be further overloaded by the new task or have no extra bandwidth to participate in the new task.
+
+h3. 4. Doesn't Help Others
+
+Overloaded employees struggle to keep up the schedule and are unlikely to proactively go out and help others.
+
+h3. 5. Independent
+
+Knowing collaboration is necessary to thrive as a team, overloaded employees involuntarily choose to work alone to avoid wasting time on unproductive communications. 
+
+h3. 6. Irresponsible
+
+Overloaded employees often miss deadlines and are late for work due to working late in the evening.
+
+h3. 7. No Initiative
+
+Overloaded employees can hardly finish all things they are told to do and do not have bandwidth to think about what they are told to do. 
+
+h3. 8. No Questions
+
+Overloaded employees' mind is fully occupied by the undone tasks and is not capable of asking questions and learning new things unless they obviously help resolve the undone tasks.
+
+h3. 9. No Growth
+
+They are discouraged to invest in themselves to become better people and grow within the company in the long run because the long term investment does not fit the near term schedule.
+
+h3. 10. Distracted
+
+Overloaded employees are easily distracted due to concurrently working on too many tasks.
