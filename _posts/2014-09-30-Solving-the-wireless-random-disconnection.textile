@@ -1,0 +1,22 @@
+---
+layout: post
+category :
+tagline: ""
+tags : []
+---
+{% include JB/setup %}
+
+The problem of the wireless on my laptop being randomly disconnected has been bothering me for months. To be more specific, it isn't always disconnected in the way that the wireless icon shows "no connection". Instead, the laptop still connects to the wireless router, as I can access the status page of my wireless router via the browser and restart the wireless router remotely. It's just that without restarting my wireless router, it takes hours for the connection to be restored.
+
+Few weeks ago I decided to spend some time investigating this issue. At the beginning I thought the wireless router was the source of the problem, for my wife and I seemed to encounter the disconnection at the same time on two laptops. But when the disconnection happened, the linux desktop connected to the router via Ethernet remained connected to the Internet, which means the router itself did not really disconnect from the Internet. Another observation is that I could use the router to @ping@/@traceroute@ the websites on the Internet, but if I did it from the laptop, @ping@ always showed "Request Time out", and @traceroute@ suggested that there was no response after 7th hop. 
+
+The result of @traceroute@ was particularly interesting. If I @traceroute@ some websites like @google.com@, the results showed that starting from 7th hop (yes, always 7th hop if the route is longer than 7 hops) there was no response. But if I @traceroute@ the 2nd to the 6th hop, the result also showed that the individual hop did not respond, despite I saw them on the report of tracerouting @google.com@. This interesting finding made me start to wonder whether the problem lies with the laptop. I tried disabling the firewall and the anti-virus but in no avail. And eventually the I decided to pay the Windows Event Viewer a visit. I correlated the disconnection time with the events and found some events like
+
+<pre>
+Event ID 5007 from source NETwNe64 cannot be found
+</pre>
+
+By googling that event description I found several forum discussions about the wireless disconnection related to Intel's chipset, and the resolution was just to download the latest driver directly from Intel. 
+
+And that's what I did last week. The disconnection problem used to hit me once or twice a day, and so far I haven't seen it since the driver update. I guess I can consider this issue closed. 
+
